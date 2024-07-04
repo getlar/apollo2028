@@ -1,0 +1,21 @@
+name: apollo
+channels:
+  - conda-forge
+  - defaults
+  - pytorch
+dependencies:
+  - python=3.11
+  - numpy
+  - matplotlib
+  - scipy
+  - pip
+  - cython
+  - tqdm
+  - yaml
+  - pyyaml
+  - notebook
+  - tensorboard
+  - pytorch
+  - seaborn
+  - pytest
+  - pylint
