@@ -23,8 +23,12 @@ if [ -z "$os" ] || [ -z "$device" ] || [ -z "$version" ]; then
     usage
 fi
 
-if [ "$os" = "mac" ]; then
-    docker run -it --gpus all --env DISPLAY=host.docker.internal:0 --env QT_X11_NO_MITSHM=1 --volume /tmp/.X11-unix:/tmp/.X11-unix --volume /etc/machine-id:/etc/machine-id:ro --device /dev/dri -p 8888:8888 -p 8521:8521 -v $(pwd):/usr/src/apollo2028 ranuon98/apollo:latest /bin/bash
+if [ "$device" = "gpu" ]; then
+    image="apollo_gpu"
+    gpu="--gpus all"
 else
-    docker run -it --gpus all --env DISPLAY=$DISPLAY --env QT_X11_NO_MITSHM=1 --volume /tmp/.X11-unix:/tmp/.X11-unix --volume /etc/machine-id:/etc/machine-id:ro --device /dev/dri -p 8888:8888 -p 8521:8521 -v $(pwd):/usr/src/apollo2028 ranuon98/apollo:latest /bin/bash
+    image="apollo_cpu"
+    gpu=""
 fi
+
+docker run -it $gpu --env DISPLAY=$DISPLAY --env QT_X11_NO_MITSHM=1 --volume /tmp/.X11-unix:/tmp/.X11-unix --volume /etc/machine-id:/etc/machine-id:ro -p 8888:8888 -p 8521:8521 -v $(pwd):/usr/src/apollo2028 ranuon98/$image:latest /bin/bash

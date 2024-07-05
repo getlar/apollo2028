@@ -39,11 +39,11 @@ jobs:
           
     - name: Install Swabber Python packages
       run: |
-            source $CONDA/bin/activate swabber
+            source $CONDA/bin/activate apollo
             pip install --no-cache-dir --upgrade pip
             pip install --no-cache-dir -r requirements.txt 
 
     - name: Run PyTest
       run: |
-        source $CONDA/bin/activate swabber
-        PYTHONPATH=src/. pylint $(git ls-files '*.py' ':!:src/examples/*') --fail-under=5
+        source $CONDA/bin/activate apollo
+        PYTHONPATH=src/. pylint $(git ls-files '*.py') --fail-under=5

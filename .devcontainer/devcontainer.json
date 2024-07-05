@@ -1,7 +1,7 @@
 {
-    "name": "Swabber",
+    "name": "Apollo",
     "build": {
-        "dockerfile": "../Dockerfile",
+        "dockerfile": "../Dockerfile.CPU",
         "args": {
             "platform": "linux/amd64"
         }
@@ -18,9 +18,9 @@
             ]
         }
     },
-    "workspaceFolder": "/usr/src/swabber",
+    "workspaceFolder": "/usr/src/apollo2028",
     "mounts": [
-        "source=${localWorkspaceFolder},target=/usr/src/swabber,type=bind,consistency=cached"
+        "source=${localWorkspaceFolder},target=/usr/src/apollo2028,type=bind,consistency=cached"
     ],
     "forwardPorts": [8888, 8521],
     "runArgs": [
