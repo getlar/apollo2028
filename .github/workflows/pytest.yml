@@ -37,7 +37,7 @@ jobs:
           $CONDA/bin/conda env update --file environment.yml
           $CONDA/bin/conda init bash
           
-    - name: Install Swabber Python packages
+    - name: Install Apollo Python packages
       run: |
             source $CONDA/bin/activate apollo
             pip install --no-cache-dir --upgrade pip
